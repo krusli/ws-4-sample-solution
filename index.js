@@ -3,20 +3,17 @@ let app = express();
 
 let fakedb = require('./db.js');
 
-app.get('/', (req, res) => {
-  res.send('Hello world.');
-})
+// import controllers
+let rootController = require('./controllers/root.js');
+let usersAllController = require('./controllers/users_all.js');
+let usersOneController = require('./controllers/users_one.js');
 
-app.get('/users', (req, res) => {
-    res.send(fakedb)
-});
+app.set('view engine', 'ejs');
 
-app.get('/users/:id', (req, res) => {
-    let id = req.params.id;
-    if (id > fakedb.length - 1)
-        res.sendStatus(404);
-    else
-        res.send(fakedb[id]);
-});
+app.get('/', rootController);
+
+app.get('/users', usersAllController);
+
+app.get('/users/:id', usersOneController);
 
 app.listen(3000, () => console.log('Listening on port 3000...'));
