@@ -13,7 +13,7 @@ app.get('/users', (req, res) => {
 
 app.get('/users/:id', (req, res) => {
     let id = req.params.id;
-    if (id > fakedb.no_of_users - 1)
+    if (id > fakedb.length - 1)
         res.sendStatus(404);
     else
         res.send(fakedb[id]);
