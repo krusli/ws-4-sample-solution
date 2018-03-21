@@ -4,7 +4,7 @@ let app = express();
 let fakedb = require('./db.js');
 
 // use ejs as the view engine
-app.use('view engine', ejs)
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
   res.send('Hello world.');
