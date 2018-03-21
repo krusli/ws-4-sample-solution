@@ -3,12 +3,19 @@ let app = express();
 
 let fakedb = require('./db.js');
 
+// use ejs as the view engine
+app.use('view engine', ejs)
+
 app.get('/', (req, res) => {
   res.send('Hello world.');
 })
 
 app.get('/users', (req, res) => {
-    res.send(fakedb)
+  // renders the .ejs template, passing the users db through the
+  // variable "users"
+  res.render('user_template', {
+      users: fakedb
+  });
 });
 
 app.get('/users/:id', (req, res) => {
