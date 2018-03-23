@@ -1,4 +1,4 @@
-let fakedb = require('../db.js');
+let fakedb = require('../models/db.js');
 
 module.exports = (req, res) => {
     let id = req.params.id;
