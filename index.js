@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
 
-let fakedb = require('./db.js');
+let fakedb = require('./models/db.js');
 
 // use ejs as the view engine
 app.set('view engine', 'ejs');
